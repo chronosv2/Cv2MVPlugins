@@ -1,13 +1,24 @@
 //================================================================
 // Chronosv2 Plugins - Max Buff Editor
 // Cv2_BuffMaxEditor.js
+// Released under the MIT License. See LICENSE file at
+// https://github.com/chronosv2/Cv2MVPlugins/blob/master/LICENSE
+// for details.
+// You can also receive the latest version of each of these
+// plugins from https://github.com/chronosv2/Cv2MVPlugins
+//
+// As per the above license, you are free to use this project
+// for any commercial or non-commercial purposes. All I ask is
+// that you give credit -- "Chronosv2" will suffice. If you feel
+// so inclined, let me know about any projects you make using
+// these plugins -- I'd love to see them!
 //================================================================
 
 var Imported = Imported || {};
 Imported.Cv2_BuffMaxEditor = true;
 
 /*:
- * @plugindesc [v0.7.0] Changes Engine Buff/Debuff Settings.
+ * @plugindesc [v1.0.0] Changes Engine Buff/Debuff Settings.
  * @author chronosv2
  *
  * @param Max Buffs
@@ -25,7 +36,7 @@ Imported.Cv2_BuffMaxEditor = true;
  * be greater than 0 but less than 1. Default: 0.25
  * @default 0.25
  *
- * @help Version 0.7.0 (8:11 PM, October 23, 2015)
+ * @help Version 1.0.0 (4:07 PM, 12/10/2015)
  * This plugin does not provide plugin commands.
  * 
  * Please note the acceptable ranges for values.

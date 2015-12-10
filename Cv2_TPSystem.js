@@ -1,13 +1,24 @@
 //================================================================
 // Chronosv2 Plugins - Cv2 TP System
 // Cv2_TPSystem.js
+// Released under the MIT License. See LICENSE file at
+// https://github.com/chronosv2/Cv2MVPlugins/blob/master/LICENSE
+// for details.
+// You can also receive the latest version of each of these
+// plugins from https://github.com/chronosv2/Cv2MVPlugins
+//
+// As per the above license, you are free to use this project
+// for any commercial or non-commercial purposes. All I ask is
+// that you give credit -- "Chronosv2" will suffice. If you feel
+// so inclined, let me know about any projects you make using
+// these plugins -- I'd love to see them!
 //================================================================
 
 var Imported = Imported || {};
 Imported.Cv2_TPSystem = true;
 
 /*:
- * @plugindesc [v1.2.0] Implements new TP functions such as Individual Max TP,
+ * @plugindesc [v1.2.1] Implements new TP functions such as Individual Max TP,
  * Class-based TP and expression-based Initial TP values in combat.
  * @author chronosv2
  *
@@ -22,7 +33,7 @@ Imported.Cv2_TPSystem = true;
  * @default false
 
  *
- * @help Version 1.2.0 (9:18 PM, November 7, 2015)
+ * @help Version 1.2.1 (4:08 PM, 12/10/2015)
  * This plugin does not implement any commands.
  *
  * This plugin can be used to modify a number of TP-related functions for a character.
@@ -245,7 +256,7 @@ Imported.Cv2_TPSystem = true;
                 try {
                     if (eqTPFormula !== null) {
                         InitialTP = eval(eqTPFormula);
-                        console.log(InitialTP);
+                        //console.log(InitialTP);
                         this.setTp(Math.round(InitialTP));
                         return;
                     }

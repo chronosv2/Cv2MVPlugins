@@ -1,12 +1,23 @@
 //================================================================
 // Chronosv2 Plugins - Death Common Event
 // Cv2_DeathCommonEvent.js
+// Released under the MIT License. See LICENSE file at
+// https://github.com/chronosv2/Cv2MVPlugins/blob/master/LICENSE
+// for details.
+// You can also receive the latest version of each of these
+// plugins from https://github.com/chronosv2/Cv2MVPlugins
+//
+// As per the above license, you are free to use this project
+// for any commercial or non-commercial purposes. All I ask is
+// that you give credit -- "Chronosv2" will suffice. If you feel
+// so inclined, let me know about any projects you make using
+// these plugins -- I'd love to see them!
 //================================================================
 
 var Imported = Imported || {};
 Imported.Cv2_DeathCommonEvent = true;
 /*:
- * @plugindesc [v1.1.1] Calls a Common Event on character death.
+ * @plugindesc [v1.1.2] Calls a Common Event on character death.
  * @author chronosv2
  *
  * @param DCE Fallthrough
@@ -14,7 +25,7 @@ Imported.Cv2_DeathCommonEvent = true;
  * and actor DCE, both will be run. Valid values: true / false
  * @default false
  *
- * @help Version 1.1.1 (2:07 PM, 10/30/2015)
+ * @help Version 1.1.2 (4:07 PM, 12/10/2015)
  *
  * This plugin does not implement any commands.
  *
