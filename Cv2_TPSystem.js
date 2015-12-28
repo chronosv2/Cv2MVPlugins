@@ -20,6 +20,7 @@ Imported.Cv2_TPSystem = true;
 /*:
  * @plugindesc [v1.2.1] Implements new TP functions such as Individual Max TP,
  * Class-based TP and expression-based Initial TP values in combat.
+ * <Cv2 TPSystem>
  * @author chronosv2
  *
  * @param Equipment Mod MaxTP
@@ -33,7 +34,7 @@ Imported.Cv2_TPSystem = true;
  * @default false
 
  *
- * @help Version 1.2.1 (4:08 PM, 12/10/2015)
+ * @help Version 1.2.1 (2:03 AM, December 28, 2015)
  * This plugin does not implement any commands.
  *
  * This plugin can be used to modify a number of TP-related functions for a character.
@@ -129,7 +130,7 @@ Imported.Cv2_TPSystem = true;
 */
 
 (function() {
-	var parameters = PluginManager.parameters('Cv2_TPSystem');
+	var parameters = $plugins.filter(function(p) { return p.description.contains('<Cv2 TPSystem>'); })[0].parameters;
 	var CheckEquips = (parameters['Equipment Mod MaxTP'].toLowerCase() === 'true');
     var CustomTPDisp = (parameters['Custom TP Display'].toLowerCase() === 'true');
 
@@ -256,7 +257,7 @@ Imported.Cv2_TPSystem = true;
                 try {
                     if (eqTPFormula !== null) {
                         InitialTP = eval(eqTPFormula);
-                        //console.log(InitialTP);
+                        console.log(InitialTP);
                         this.setTp(Math.round(InitialTP));
                         return;
                     }
