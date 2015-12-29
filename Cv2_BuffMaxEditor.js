@@ -58,7 +58,7 @@ Imported.Cv2_BuffMaxEditor = true;
 
 (function() {
 
-    var parameters = $plugins.filter(function(p) { return p.description.contains('<Cv2 BuffMaxEditor>'); })[0].parameters;
+    var parameters = PluginManager.parameters('Cv2_BuffMaxEditor');
     var MaxPos = Number(parameters['Max Buffs'] || 2);
     var MaxNeg = Number(parameters['Max Debuffs'] || -2);
 	var BuffAmt = Number(parameters['Buff Multiplier'] || 0.25);

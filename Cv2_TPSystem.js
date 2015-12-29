@@ -130,7 +130,7 @@ Imported.Cv2_TPSystem = true;
 */
 
 (function() {
-	var parameters = $plugins.filter(function(p) { return p.description.contains('<Cv2 TPSystem>'); })[0].parameters;
+	var parameters = PluginManager.parameters('Cv2_TPSystem');
 	var CheckEquips = (parameters['Equipment Mod MaxTP'].toLowerCase() === 'true');
     var CustomTPDisp = (parameters['Custom TP Display'].toLowerCase() === 'true');
 

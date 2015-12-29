@@ -50,7 +50,7 @@ Imported.Cv2_DeathCommonEvent = true;
 */
 
 (function () {
-	var parameters = $plugins.filter(function(p) { return p.description.contains('<Cv2 DeathCommonEvent>'); })[0].parameters;
+	var parameters = var parameters = PluginManager.parameters('Cv2_DeathCommonEvent');
 	var THCmEvtQueue = !!Imported.CommonEventQueue;
 	var DCEFallThrough = (parameters['DCE Fallthrough'].toLowerCase() === 'true');
 
