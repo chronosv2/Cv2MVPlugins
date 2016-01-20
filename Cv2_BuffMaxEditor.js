@@ -19,6 +19,7 @@ Imported.Cv2_BuffMaxEditor = true;
 
 /*:
  * @plugindesc [v1.0.0] Changes Engine Buff/Debuff Settings.
+ * <Cv2 BuffMaxEditor>
  * @author chronosv2
  *
  * @param Max Buffs
@@ -36,9 +37,9 @@ Imported.Cv2_BuffMaxEditor = true;
  * be greater than 0 but less than 1. Default: 0.25
  * @default 0.25
  *
- * @help Version 1.0.0 (4:07 PM, 12/10/2015)
+ * @help Version 1.0.0 (1:59 AM, December 28, 2015)
  * This plugin does not provide plugin commands.
- * 
+ *
  * Please note the acceptable ranges for values.
  * Going outside of these ranges will reset them to their defaults.
  *
@@ -61,12 +62,12 @@ Imported.Cv2_BuffMaxEditor = true;
     var MaxPos = Number(parameters['Max Buffs'] || 2);
     var MaxNeg = Number(parameters['Max Debuffs'] || -2);
 	var BuffAmt = Number(parameters['Buff Multiplier'] || 0.25);
-	
+
 	if (MaxPos < 1) {
 		MaxPos = 2;
 		console.log("Maximum Buffs invalid. Setting to default (2).");
 	}
-	
+
 	if (MaxNeg > -1) {
 		MaxNeg = -2;
 		console.log("Maximum Debuffs invalid. Setting to default (-2).");
@@ -77,7 +78,7 @@ Imported.Cv2_BuffMaxEditor = true;
 		console.log("Buff Multiplier invalid. Setting to default (0.25).");
 		console.log("Valid Range: 0.01 to 0.99");
 	}
-	
+
 	Game_BattlerBase.prototype.isMaxBuffAffected = function(paramId) {
 		return this._buffs[paramId] === MaxPos;
 	};
@@ -99,5 +100,5 @@ Imported.Cv2_BuffMaxEditor = true;
 			return 0;
 		}
 	};
-	
+
 })();

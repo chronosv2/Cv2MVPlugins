@@ -18,6 +18,7 @@ var Imported = Imported || {};
 Imported.Cv2_DeathCommonEvent = true;
 /*:
  * @plugindesc [v1.1.2] Calls a Common Event on character death.
+ * <Cv2 DeathCommonEvent>
  * @author chronosv2
  *
  * @param DCE Fallthrough
@@ -25,7 +26,7 @@ Imported.Cv2_DeathCommonEvent = true;
  * and actor DCE, both will be run. Valid values: true / false
  * @default false
  *
- * @help Version 1.1.2 (4:07 PM, 12/10/2015)
+ * @help Version 1.1.2 (2:04 AM, December 28, 2015)
  *
  * This plugin does not implement any commands.
  *
@@ -49,7 +50,7 @@ Imported.Cv2_DeathCommonEvent = true;
 */
 
 (function () {
-	var parameters = PluginManager.parameters('Cv2_DeathCommonEvent');
+	var parameters = var parameters = PluginManager.parameters('Cv2_DeathCommonEvent');
 	var THCmEvtQueue = !!Imported.CommonEventQueue;
 	var DCEFallThrough = (parameters['DCE Fallthrough'].toLowerCase() === 'true');
 
