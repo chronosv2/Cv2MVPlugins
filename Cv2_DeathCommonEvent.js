@@ -90,8 +90,8 @@ Imported.Cv2_DeathCommonEvent = true;
 	var DCEFallThrough = (parameters['DCE Fallthrough'].toLowerCase() === 'true');
 	var DCEAllAllyDead = Number(parameters['All Ally Dead DCE'] || 0);
 	var DCEAllEnemyDead = Number(parameters['All Enemy Dead DCE'] || 0);
-	var DCEAnyAllyDead = Number(parameters['All Ally Dead DCE'] || 0);
-	var DCEAnyEnemyDead = Number(parameters['All Enemy Dead DCE'] || 0);
+	var DCEAnyAllyDead = Number(parameters['Any Ally Dead DCE'] || 0);
+	var DCEAnyEnemyDead = Number(parameters['Any Enemy Dead DCE'] || 0);
 
 	if (!THCmEvtQueue && DCEFallThrough) {
 		console.log("Hime's Common Event Queue plugin not found. DCE Fallthrough will do nothing.");
