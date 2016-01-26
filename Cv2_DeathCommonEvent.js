@@ -37,12 +37,12 @@ Imported.Cv2_DeathCommonEvent = true;
  * @default 0
  *
  * @param Any Ally DCE
- * @desc Common Event run when ALL allies are dead.
+ * @desc Common Event run when ANY ally dies.
  * Set to 0 to disable.
  * @default 0
  *
  * @param Any Enemy DCE
- * @desc Common Event run when ALL Enemies are dead.
+ * @desc Common Event run when ANY enemy dies.
  * Set to 0 to disable.
  * @default 0
  *
