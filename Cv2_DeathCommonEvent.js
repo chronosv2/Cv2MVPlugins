@@ -17,7 +17,7 @@
 var Imported = Imported || {};
 Imported.Cv2_DeathCommonEvent = true;
 /*:
- * @plugindesc [v1.1.2] Calls a Common Event on character death.
+ * @plugindesc [v1.2.0] Calls a Common Event on character death.
  * <Cv2 DeathCommonEvent>
  * @author chronosv2
  *
@@ -26,9 +26,44 @@ Imported.Cv2_DeathCommonEvent = true;
  * and actor DCE, both will be run. Valid values: true / false
  * @default false
  *
- * @help Version 1.1.2 (2:04 AM, December 28, 2015)
+ * @param All Ally Dead DCE
+ * @desc Common Event run when ALL allies are dead.
+ * Set to 0 to disable.
+ * @default 0
+ *
+ * @param All Enemy Dead DCE
+ * @desc Common Event run when ALL Enemies are dead.
+ * Set to 0 to disable.
+ * @default 0
+ *
+ * @param Any Ally DCE
+ * @desc Common Event run when ALL allies are dead.
+ * Set to 0 to disable.
+ * @default 0
+ *
+ * @param Any Enemy DCE
+ * @desc Common Event run when ALL Enemies are dead.
+ * Set to 0 to disable.
+ * @default 0
+ *
+ * @help Version 1.2.0 (9:54 PM, January 25, 2016)
  *
  * This plugin does not implement any commands.
+ *
+ * Parameters:
+ * - All Ally Dead DCE: The Event ID to be run when All Allies are dead.
+ * This actually runs before Game Over, so it could be used to check
+ * for a condition to revive a party member, for example.
+ * - All Enemy Dead DCE: The Event ID to be run when All Enemies are dead.
+ * This actually runs before Battle Victory. I'm not exactly sure what
+ * this could be used for but it could be useful I'm sure.
+ * - Any Ally Dead DCE: The Event ID to be run when any Ally dies.
+ * This will only be run if the actor does not have an Actor or Class
+ * DCE. Next version will add the ability for more DCE fallthrough so
+ * that "Any" DCE will be run in sequence if Hime's Common Event Queue
+ * is loaded and DCE Fallthrough is set to true.
+ * - Any Enemy Dead DCE: The Event ID to be run when any Enemy dies.
+ * See above for information about fallthrough.
  *
  * Place the notetag <DeathCommonEvent:[id]> in the note box for
  * an actor, class or enemy that needs a common event when they die.
@@ -50,9 +85,13 @@ Imported.Cv2_DeathCommonEvent = true;
 */
 
 (function () {
-	var parameters = var parameters = PluginManager.parameters('Cv2_DeathCommonEvent');
+	var parameters = PluginManager.parameters('Cv2_DeathCommonEvent');
 	var THCmEvtQueue = !!Imported.CommonEventQueue;
 	var DCEFallThrough = (parameters['DCE Fallthrough'].toLowerCase() === 'true');
+	var DCEAllAllyDead = Number(parameters['All Ally Dead DCE'] || 0);
+	var DCEAllEnemyDead = Number(parameters['All Enemy Dead DCE'] || 0);
+	var DCEAnyAllyDead = Number(parameters['All Ally Dead DCE'] || 0);
+	var DCEAnyEnemyDead = Number(parameters['All Enemy Dead DCE'] || 0);
 
 	if (!THCmEvtQueue && DCEFallThrough) {
 		console.log("Hime's Common Event Queue plugin not found. DCE Fallthrough will do nothing.");
@@ -61,6 +100,7 @@ Imported.Cv2_DeathCommonEvent = true;
 	var Cv2_Game_BattlerBase_die = Game_BattlerBase.prototype.die;
 	Game_BattlerBase.prototype.die = function() {
 		// console.log("'.die' called.");
+		//console.log(this.name() + " isAlive: " + this.isAlive() + " (Should be false)");
 		if (this.isActor()) {
 			// console.log("Actor ID: " + this._actorId);
 			var ActorID = this._actorId;
@@ -74,6 +114,20 @@ Imported.Cv2_DeathCommonEvent = true;
 			} else if (this.actor().meta.DeathCommonEvent) {
 				// console.log("Actor's DCE: " + Number(this.actor().meta.DeathCommonEvent));
 				$gameTemp.reserveCommonEvent(Number(this.actor().meta.DeathCommonEvent));
+			} else if (DCEAnyAllyDead > 0) {
+				$gameTemp.reserveCommonEvent(DCEAnyAllyDead);
+			}
+			if (DCEAllAllyDead > 0) {
+				var RunDCE = true;
+				for (i = 0; i < this.friendsUnit().members().length; i++) {
+					if (i === this.index()) continue;
+					if (this.friendsUnit().members()[i].isAlive()) {
+						RunDCE = false;
+					}
+				}
+				if (RunDCE === true) {
+					$gameTemp.reserveCommonEvent(DCEAllAllyDead);
+				}
 			}
 		} else {
 			if (this.isEnemy()) {
@@ -81,8 +135,21 @@ Imported.Cv2_DeathCommonEvent = true;
 				if (this.enemy().meta.DeathCommonEvent) {
 					// console.log("Actor's DCE: " + Number(this.enemy().meta.DeathCommonEvent));
 					$gameTemp.reserveCommonEvent(Number(this.enemy().meta.DeathCommonEvent));
+				} else if (DCEAnyEnemyDead > 0) {
+					$gameTemp.reserveCommonEvent(DCEAnyEnemyDead);
 				}
-
+				if (DCEAllEnemyDead > 0) {
+					var RunDCE = true;
+					for (i = 0; i < this.friendsUnit().members().length; i++) {
+						if (i === this.index()) continue;
+						if (this.friendsUnit().members()[i].isAlive()) {
+							RunDCE = false;
+						}
+					}
+					if (RunDCE === true) {
+						$gameTemp.reserveCommonEvent(DCEAllEnemyDead);
+					}
+				}
 			}
 		}
 		Cv2_Game_BattlerBase_die.call(this);
