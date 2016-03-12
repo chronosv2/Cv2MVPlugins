@@ -18,7 +18,6 @@ var Imported = Imported || {};
 Imported.Cv2_DeathCommonEvent = true;
 /*:
  * @plugindesc [v1.2.0] Calls a Common Event on character death.
- * <Cv2 DeathCommonEvent>
  * @author chronosv2
  *
  * @param DCE Fallthrough
