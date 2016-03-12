@@ -1,6 +1,10 @@
 # Cv2MVPlugins
 Git Repo for Public RPG Maker MV Plugins
 
+Please do not rename these plugins.
+Any plugin that works off a filename-less parameters system
+will be noted in the file's header.
+
 Released under the MIT License. See LICENSE file at
 https://github.com/chronosv2/Cv2MVPlugins/blob/master/LICENSE
 for details.
