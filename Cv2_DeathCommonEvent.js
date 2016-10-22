@@ -53,6 +53,10 @@ Imported.Cv2_DeathCommonEvent = true;
  * - All Ally Dead DCE: The Event ID to be run when All Allies are dead.
  * This actually runs before Game Over, so it could be used to check
  * for a condition to revive a party member, for example.
+ * NOTE: Due to an error on my part, it turns out Game Over ran even if
+ * the party was revived.
+ * If you use All Ally Dead DCE, you will have to handle the Game Over
+ * step yourself.
  * - All Enemy Dead DCE: The Event ID to be run when All Enemies are dead.
  * This actually runs before Battle Victory. I'm not exactly sure what
  * this could be used for but it could be useful I'm sure.
