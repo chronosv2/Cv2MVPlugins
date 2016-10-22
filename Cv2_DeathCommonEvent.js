@@ -125,6 +125,7 @@ Imported.Cv2_DeathCommonEvent = true;
 					}
 				}
 				if (RunDCE === true) {
+					BattleManager._canLose = true;
 					$gameTemp.reserveCommonEvent(DCEAllAllyDead);
 				}
 			}
