@@ -27,7 +27,7 @@ Imported.Cv2_DeathCommonEvent = true;
  *
  * @param All Ally Dead DCE
  * @desc Common Event run when ALL allies are dead.
- * Set to 0 to disable.
+ * Set to 0 to disable. See Help for important info.
  * @default 0
  *
  * @param All Enemy Dead DCE
@@ -53,18 +53,15 @@ Imported.Cv2_DeathCommonEvent = true;
  * - All Ally Dead DCE: The Event ID to be run when All Allies are dead.
  * This actually runs before Game Over, so it could be used to check
  * for a condition to revive a party member, for example.
- * NOTE: Due to an error on my part, it turns out Game Over ran even if
- * the party was revived.
- * If you use All Ally Dead DCE, you will have to handle the Game Over
- * step yourself.
+ * IMPORTANT NOTE: Due to an error on my part, it turns out Game Over ran
+ * even if the party was revived. If you use All Ally Dead DCE, you will
+ * have to handle the Game Over step yourself.
  * - All Enemy Dead DCE: The Event ID to be run when All Enemies are dead.
  * This actually runs before Battle Victory. I'm not exactly sure what
  * this could be used for but it could be useful I'm sure.
  * - Any Ally Dead DCE: The Event ID to be run when any Ally dies.
  * This will only be run if the actor does not have an Actor or Class
- * DCE. Next version will add the ability for more DCE fallthrough so
- * that "Any" DCE will be run in sequence if Hime's Common Event Queue
- * is loaded and DCE Fallthrough is set to true.
+ * DCE.
  * - Any Enemy Dead DCE: The Event ID to be run when any Enemy dies.
  * See above for information about fallthrough.
  *
